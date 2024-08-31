@@ -1,0 +1,84 @@
+import java.util.*;
+class useraccount
+{
+	String usename,emailid,password;
+	Scanner sc=new Scanner(System.in);
+	useraccount()
+
+}
+void getter()
+{
+	System.out.println("enter userame=");
+	username=sc.next();
+	System.out.println("enter emaild=");
+	emailid=sc.next();
+	System.out.println("enter password");
+	password=sc.next();
+}
+void setter()
+{
+	System.out.println("username is ="+username);
+	System.out.println("emailid is="+emailid);
+	System.out.println("password is="+password);
+}
+}
+class Yahoo extends useraccount
+{
+	String securityquestion,securityanswer;
+	Yahoo()
+	{
+		securityquestion=null;
+		securityanswer=null;
+	}
+void getter()
+{
+	System.out.println("enter security question=");
+	securityquestion=sc.next();
+	System.out.println("enter security answer=");
+	securityanswer=sc.next();
+}
+void setter()
+{
+	System.out.println("entersecurity question="+securityquestion);
+	System.out.println("entersecurity answer="+securityanswer);
+
+}
+}
+class twitter extends useraccount
+{
+	String type,twitmesg;
+	twitter()
+	{
+		type=null;
+		twitmesg=null;
+
+	}
+void getter()
+{
+	System.out.println("enter twitter account type=");
+	type=sc.next();
+	System.out.println("enter twitter account message=");
+	twitmesg=sc.next();
+}
+void setter()
+{
+	System.out.println("enter twitter account type="+type);
+	System.out.println("enter twitter account message"+message);
+}
+}
+class p11
+{
+	public static void main(String args[])
+	{
+		useraccount u=new useraccount();
+		u.getter();
+		u.setter();
+		Yahoo y=new Yahoo();
+		y.getter();
+		y.setter();
+		twitter t=new twitter();
+		t.getter();
+		t.setter();
+
+	}
+}

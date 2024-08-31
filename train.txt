@@ -1,0 +1,84 @@
+import java.util.*;
+class Train
+{
+Scanner sc=new Scanner(System.in);
+	int tno;
+	String tname;
+	String tsource;
+	String tdes;
+	int coach;
+	int seats;
+	int child;
+	int sec;
+	int amount;
+	int countticket()
+	{
+		if(coach==1)
+		{
+			seats=seats-child-sec;
+			amount=seats*260;
+			sec=sec*130;
+			amount=amount+sec;
+		}
+		else if(coach==2)
+		{
+			seats=seats-child;
+			amount=seats*180;
+		}
+		else
+		{
+			seats=seats-child;
+			amount=seats*75;
+		}
+		return amount;
+	}
+	void Traininfo()
+	{
+		System.out.println("/t train /t");
+		System.out.println("------------------------------------------------");
+		System.out.println("Train number="+tno);
+		System.out.println("Train name=" +tname);
+		System.out.println("Train source="+tsource);
+		System.out.println("Train destination="+ tdes);
+		System.out.println("Train coach="+coach);
+		System.out.println("Train seats="+seats);
+		System.out.println("Seats for childrens="+child);
+		System.out.println("Seats for senior citizon="+sec);
+		System.out.println("------------------------------------------------");
+		System.out.println("total amount is="+countticket());
+	}
+	void Trains()
+	{
+		System.out.println("-------------------------------------------------");
+		System.out.println("enter train number:");
+		tno=sc.nextInt();
+		System.out.println("enter train name:");
+		tname=sc.next();
+		System.out.println("enter train source:");
+		tsource=sc.next();
+		System.out.println("enter train destination :");
+		tdes=sc.next();
+		System.out.println("available coach=");
+		System.out.println("s1- first ac-fair-260rs");
+		System.out.println("s2-chair car-180rs");
+		System.out.println("s3-sleeper-75rs");
+		System.out.println("enter coach");
+		coach=sc.nextInt();
+		System.out.println("enter seats");
+		seats=sc.nextInt();
+		System.out.println("numberof childrens:");
+		child=sc.nextInt();
+		System.out.println("number of senior citizon:");
+		sec=sc.nextInt();
+		System.out.println("-------------------------------------------------");
+	}
+}
+class p14
+{
+	public static void main(String args[])
+	{
+		Train c1=new Train();
+		c1.Trains();
+		c1.Traininfo();
+	}
+}

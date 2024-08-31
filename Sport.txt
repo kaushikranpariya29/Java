@@ -1,0 +1,76 @@
+import java.util.*;
+class Student {
+	String s_name;
+	String clas;
+	long enro;
+
+	void getter( Scanner sc) {
+		System.out.print("\nFeel Following Detail :-\nEnro    : ");
+		enro = sc.nextLong();
+		sc.skip("\\R");
+		System.out.print("Name   : ");
+		s_name = sc.nextLine();
+		System.out.print("Class  : ");
+		clas = sc.nextLine();
+	}
+
+	void setter() {
+		System.out.println("=================================\nEnro  : " + enro+"\nName  : " + s_name+"\nClass : " + clas+"\n=================================");
+	}
+}
+
+interface Sports {
+	void sportgrade();
+}
+
+class Exam extends Student {
+	float marks[] = new float[6];
+	void readmarks(Scanner sc) {
+		System.out.println("Enter the marks of 6 Subject :- ");
+		for (int i = 0; i < 6; i++) {
+			marks[i] = sc.nextFloat();
+		}
+	}
+}
+
+class Result extends Exam implements Sports {
+	float total_marks;
+	float result_mark ;
+	int Sports_Grade ;
+	Result(){
+		total_marks = result_mark = 0.0f;
+		Sports_Grade = 0;		
+	}
+	public void sportgrade() {
+		Scanner sc = new Scanner(System.in);
+		String ch;
+		System.out.print("Students are Participate in the national games ? : ");
+		ch = sc.nextLine();
+		if (ch.equals("y") || ch.equals("Y") ) {
+			System.out.print("Enter a sport mark : ");
+			Sports_Grade = sc.nextInt();
+		}
+	}
+
+	void calculatetotal() {
+        for (int i = 0; i < 6; i++) {
+            total_marks = total_marks + marks[i];
+            }
+		result_mark = (total_marks/6) + Sports_Grade;
+        if(result_mark > 100){result_mark=100;}
+        System.out.println("Your Final Result is "+result_mark);
+	}
+}
+
+class Mark
+{
+	public static void main(String args[]) {
+		Scanner sc = new Scanner(System.in);
+		Result obj1 = new Result();
+		obj1.getter(sc);
+		obj1.readmarks(sc);
+		obj1.sportgrade();
+		obj1.setter();
+		obj1.calculatetotal();
+	}
+}

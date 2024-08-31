@@ -1,0 +1,97 @@
+import java.util.*;
+class Student
+{
+	int m[],total,sid;
+	String name,grade,course,email;
+	long conno;
+	float per;
+	
+	Student()
+	{
+		total=0;
+		sid=0;
+		name=null;
+		course=null;
+		email=null;
+		grade=null;
+		conno=0;	
+		per=0.0f;
+		m=new int[6];
+	}
+	void getdata()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter Student id : ");
+		sid=sc.nextInt();
+		System.out.print("Enter Name : ");
+		name=sc.next();
+		System.out.print("Enter course : ");
+		course=sc.next();
+		System.out.print("Enter Contact no : ");
+		conno=sc.nextLong();
+
+		System.out.print("Enter email address : ");	
+		email=sc.next();
+		for(int i=1;i<6;i++)
+		{
+			System.out.print("Enter marks of subject "+i+" is : ");
+			m[i]=sc.nextInt();
+		}
+	}
+	void calculate()
+	{
+		for(int i=1;i<6;i++)
+		{	
+			total=total+m[i];
+		}	
+		
+		per=(total*100)/500;
+		
+	}
+	void grade()
+	{
+		if(per>=90)
+			grade = "O" ;
+		else if (per>=80 && per<90)
+			grade = "A+";
+		else if (per>=70 && per<80)
+			grade = "A" ;
+		else if (per>=60 && per<70)
+			grade = "B+";
+		else if (per>=50 && per<60)
+			grade = "B" ;
+		else if (per>=40 && per<50)
+			grade = "C" ;	
+		else if (per<40)
+			grade = "F" ;
+		
+		
+	}
+	void display()
+	{
+		System.out.println("*********************************************");
+		System.out.println("Student Id is : "+sid);
+		System.out.println("Student Name is : "+name);
+		System.out.println("Student Course is : "+course);
+		System.out.println("Student Contact number is : "+conno);
+		System.out.println("Student Email address is : "+email);
+		for(int i=1;i<6;i++)
+		{	
+			System.out.println("Marks of subject "+i+" is : "+m[i]);	
+		}
+		System.out.println("Total : "+total);
+		System.out.println("Percentage : "+per);
+		System.out.println("Grade : "+grade);
+	}	
+}
+class Student1
+{
+	public static void main(String args[])
+	{
+	Student s=new Student();
+	s.getdata();
+	s.calculate();
+	s.grade();
+	s.display();
+	}	
+}

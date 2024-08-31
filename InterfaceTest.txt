@@ -1,0 +1,19 @@
+package com.exception.userdefined;
+
+interface In1
+{
+	static void Display() {
+		System.out.println("Hello world");
+	}
+}
+public class InterfaceTest implements In1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	//	InterfaceTest objit = new InterfaceTest();
+	//	objit.Display();
+		In1.Display();
+	}
+
+
+}

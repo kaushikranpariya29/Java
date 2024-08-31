@@ -1,0 +1,315 @@
+package com.exception.userdefined;
+/* Multiple inheritance problem in java*/
+/*class Fruit
+{
+	void display()
+	{
+		System.out.println("Fruits are good for health");
+	}
+}
+
+class Banana extends Fruit
+{
+	void makeJuice()
+	{
+		System.out.println("Make Banana Juice");
+	}
+}
+
+class Mango extends Fruit
+{
+	void makeJuice()
+	{
+		System.out.println("Make Mango Juice");
+	}
+}
+
+class InterfaceDemo extends Banana, Mango{
+	public static void main(String[] args)
+	{
+		InterfaceDemo i = new InterfaceDemo();
+		i.makeJuice();
+	}
+}
+*//*---------------------------------------------------------------------------------------------------*/
+/* Simple interface program : in which we cant declare only variables we have to assign values in it*/
+/*------------------------------------------------------------------------------------------------------*/
+/*interface Isample
+{
+	int x = 10;
+	void display();
+}
+class temp implements Isample
+{
+
+	@Override
+	public void display() {
+		System.out.println("Hello");
+		
+	}
+}
+
+class temp1 implements Isample
+{
+
+	@Override
+	public void display() {
+		System.out.println("Hi");
+	}
+	
+}
+class InterfaceDemo
+{
+	public static void main(String[] args)
+	{
+		temp t = new temp();
+		temp1 t1 = new temp1();
+		Isample obj = t1;
+		obj.display();
+		obj=t;
+		obj.display();
+		//t.display();
+		//t1.display();
+	}
+}*/
+
+/*Diamond Inheritance*/
+/*class Fruit
+{
+	void display()
+	{
+		System.out.println("Fruits are good for health");
+	}
+}
+
+interface IBanana
+{
+	void makeJuice();
+}
+
+interface IMango
+{
+	void makeJuice();
+}
+
+class MixedFruit extends Fruit implements IBanana, IMango
+{
+
+	void makeBananaJuice()
+	{
+		System.out.println("Make Banana Juice");
+	}
+	
+	void makeMangoJuice()
+	{
+		System.out.println("Make Mango Juice");
+	}
+	@Override
+	public void makeJuice() {
+		// TODO Auto-generated method stub
+		System.out.println("Make Mixed Fruit Juice");
+	}
+	
+}
+
+public class InterfaceDemo
+{
+	public static void main(String[] args)
+	{
+		MixedFruit objMixedFruit = new MixedFruit();
+		objMixedFruit.display();
+		objMixedFruit.makeBananaJuice();
+		objMixedFruit.makeMangoJuice();
+		objMixedFruit.makeJuice();
+		
+		//IMango obj2 = objMixedFruit;
+	//	obj2.makeJuice();
+	}
+}*/
+
+/*-------------------------------------------------------------------------------------*/
+/* Polymorphism in interface : possible to have two or more classes that implements the same 
+interface with different implementations*/
+/*-------------------------------------------------------------------------------------*/
+
+/*interface IBank
+{
+	void rateofInterest();
+}
+
+class SBI implements IBank
+{
+
+	@Override
+	public void rateofInterest() {
+		System.out.println("\n Rate of interest is :  9.00 % ");
+		
+	}
+	
+}
+
+class BOB implements IBank
+{
+
+	@Override
+	public void rateofInterest() {
+		System.out.println("\n Rate of interest is : 9.50 % ");
+		
+	}
+	
+}
+
+class InterfaceDemo
+{
+	public static void main(String[] args)
+	{
+		/*SBI obj = new SBI();
+		obj.rateofInterest();
+		
+		BOB obj1 = new BOB();
+		obj1.rateofInterest();
+		
+		IBank obj3 = obj;
+		obj3.rateofInterest();
+		
+		IBank obj4 = obj1;
+		obj4.rateofInterest();*/
+		
+	//	IBank sbi = new SBI();
+	//	sbi.rateofInterest();
+		
+		//IBank bob = new BOB();
+		//bob.rateofInterest();
+	//}
+//}*/
+
+
+/* Multilevel Inheritance using Interface */
+/*interface IContinent
+{
+	void ContinentDisplay();
+}
+
+interface ICountry extends IContinent
+{
+	void countryDisplay();
+}
+
+interface IState extends ICountry
+{
+	void stateDisplay();
+}
+
+class location implements IState
+{
+
+	@Override
+	public void countryDisplay() {
+		System.out.println("\n Country is : INDIA");
+		
+	}
+
+	@Override
+	public void ContinentDisplay() {
+		System.out.println("\n Continent is : ASIA");
+		
+	}
+
+	@Override
+	public void stateDisplay() {
+		System.out.println("\n State is : GUJARAT");
+		
+	}
+	
+	void locationDisplay()
+	{
+		System.out.println("\n Location is : Bardoli");
+	}
+	
+}
+
+class InterfaceDemo
+{
+	public static void main(String[] args)
+	{
+		location objlocation = new location();
+		objlocation.ContinentDisplay();
+		objlocation.countryDisplay();
+		objlocation.stateDisplay();
+		objlocation.locationDisplay();
+		
+		IState state = objlocation;
+		state.ContinentDisplay();
+		state.countryDisplay();
+		state.stateDisplay();
+		//state.locationDisplay();
+		
+		ICountry country = objlocation;
+		country.ContinentDisplay();
+		country.countryDisplay();
+	//	country.stateDisplay();
+	//	country.locationDisplay();
+		
+		IContinent continent = objlocation;
+		continent.ContinentDisplay();
+		//continent.countryDisplay();
+		//continent.stateDisplay();
+		//continent.locationDisplay();
+	}
+}*/
+
+
+interface IFruits
+{
+	default void display()
+	{
+		System.out.println("hello");
+	}
+}
+
+class Banana implements IFruits
+{
+	public void makeBananaJuice()
+	{
+		System.out.println("\n Make Banana Juice");
+	}
+}
+
+interface IApple extends IFruits
+{
+	void makeAppleJuice();
+}
+
+class MixedFruit extends Banana implements IApple
+{
+
+	@Override
+	public void makeAppleJuice() {
+		System.out.println("\n Make Apple Juice");
+		
+	}
+	
+	void makeJuice()
+	{
+		System.out.println("\n Make mixed fruit juice");
+	}
+	
+}
+
+class InterfaceDemo
+{
+	public static void main(String[] args)
+	{
+		MixedFruit objmixed = new MixedFruit();
+		objmixed.display();
+		objmixed.makeAppleJuice();
+		objmixed.makeBananaJuice();
+		objmixed.makeJuice();
+		
+		IApple obj = objmixed;
+		obj.makeAppleJuice();
+		obj.display();
+	//	obj.makeBananaJuice();
+	}
+}
+

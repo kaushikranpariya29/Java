@@ -1,0 +1,117 @@
+import java.util.*;
+class Inventory
+{
+	Scanner sc=new Scanner(System.in);
+	int Item_Id,Stock;
+	long Price;
+	String Item_Name;
+	Inventory()
+	{
+		Item_Id=Stock=0;;
+		Item_Name=null;
+	}
+	void getdata()
+	{
+		System.out.println("Enter Item Id :");
+		Item_Id=sc.nextInt();
+		System.out.println("Enter Item Name :");
+		Item_Name=sc.next();
+		System.out.println("Enter Total Stock :");
+		Stock=sc.nextInt();
+		System.out.println("Enter Price :");
+		Price=sc.nextLong();
+	}
+	void display()
+	{
+		System.out.println("Item Id is "+Item_Id);
+		System.out.println("Item Name is "+Item_Name);
+		System.out.println("Total Stock is "+Stock);
+		System.out.println("Price is "+Price);
+	}
+}
+class Purchase extends Inventory
+{
+	Scanner sc=new Scanner(System.in);
+	int pur;
+	Purchase()
+	{
+		pur=0;
+	}
+	void inc()
+	{
+		System.out.println("How Many Items you want to purchase ?");
+		pur=sc.nextInt();
+		Stock=Stock+pur;
+	}
+	void display1()
+	{
+		System.out.println("Updated Stock is "+Stock);
+	}
+	
+}
+class Sales extends Inventory
+{
+	Scanner sc=new Scanner(System.in);
+	int sale,stock;
+	Sales()
+	{
+		sale=stock=0;
+	}
+	void dec()
+	{
+		System.out.println("Enter Stock ");
+		stock=sc.nextInt();
+		System.out.println("How many items you want to sale ?");
+		sale=sc.nextInt();
+		if(stock>sale){
+			stock=stock-sale;
+		}
+		else
+		{
+			System.out.println("This amount of Items are not Available in  Stock ");
+		}
+	}
+	void display2()
+	{
+		System.out.println("Updated Stock is "+stock);
+	}
+}
+class Order
+{
+	public static void main(String args[])
+	{
+		Purchase p=new Purchase();
+		Sales s=new Sales();
+		p.getdata();
+		p.display();
+		p.inc();
+		p.display1();
+		s.dec();
+		s.display2();
+		
+	}
+}
+
+
+OUTPUT:
+
+Enter Item Id :
+1
+Enter Item Name :
+pencil
+Enter Total Stock :
+5000
+Enter Price :
+20
+Item Id is 1
+Item Name is pencil
+Total Stock is 5000
+Price is 20
+How Many Items you want to purchase ?
+2000
+Updated Stock is 7000
+Enter Stock
+7000
+How many items you want to sale ?
+5000
+Updated Stock is 2000

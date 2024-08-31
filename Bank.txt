@@ -1,0 +1,231 @@
+import java.util.*;
+class Account 
+{
+	Scanner sc=new Scanner(System.in);
+	String c_name;
+	String ac_type;
+	long ac_num;
+
+	Account()
+	{
+		c_name=null;
+		ac_type=null;
+		ac_num=0;
+	}
+
+	void getdata()
+	{
+		System.out.println("Enter Customer Name : ");
+		c_name=sc.next();
+		System.out.println("Enter Account Type : ");
+		ac_type=sc.next();
+		System.out.println("Enter Acount Number : ");
+		ac_num=sc.nextLong();
+	}
+
+	void display()
+	{
+		System.out.println("Customer Name : " + c_name);
+		System.out.println("Acount Type   : " + ac_type);
+		System.out.println("Acount Number : " + ac_num);
+	}
+}
+
+
+
+
+class SavingAcount extends Account
+{
+	Scanner sc=new Scanner(System.in);
+	long p;
+	double r,a,balance,w_balance,bal;
+	int n,t;
+	SavingAcount()
+	{
+		p=0;
+		n=t=0;
+		r=a=balance=bal=w_balance=0.0;
+	}
+
+	void getdata1()
+	{
+		getdata();
+		System.out.println("----------------------------------------------------------");
+		System.out.println("Enter Principal Balance : ");
+		p=sc.nextLong();
+		System.out.println("Enter Interest Rate    : ");
+		r=sc.nextDouble();
+		System.out.println("Enter Number of Year   : ");
+		n=sc.nextInt();
+		System.out.println("Enter number of time   : ");
+		t=sc.nextInt();
+		System.out.println("Enter Total Balance    : ");
+		balance=sc.nextInt();
+		System.out.println("Enter Widrawel Amount  : ");
+		w_balance=sc.nextInt();
+	}
+
+	double interest()
+	{
+		a=p*Math.pow(1 + (r / n),  n * t);	
+		return a;
+	}
+
+	double widraw()
+	{
+		if(balance-w_balance<balance)
+		{
+			balance=balance-w_balance;
+		}
+		else 
+		{
+			System.out.println("You can't widraw");
+		}
+	return w_balance;
+	}
+
+	void display1()
+	{
+		display();
+		System.out.println("----------------------------------------------------------");
+		System.out.println("Final Amount : " + interest());
+		System.out.println("Final Widrawal Amount : " +  widraw());
+		System.out.println("Current Balance : " + balance);
+		System.out.println("No cheque book facility available ");
+	}
+}
+/*
+The current account
+provides cheque book facility but no interest. Current account holder should also
+maintain a minimum balance and if the balance falls below the service charge is
+mposed.
+*/
+
+
+class CurrentAcount  extends Account
+{
+	Scanner sc=new Scanner(System.in);
+	int balance,bal,w_balance;
+	CurrentAcount()
+	{
+		balance=bal=w_balance=0;
+	}
+	
+	void getdata2()
+	{
+		getdata();
+		System.out.println("----------------------------------------------------------");
+		System.out.println("Enter your current balance : ");
+		balance=sc.nextInt();
+		System.out.println("Enter your widraw amount : ");
+		w_balance=sc.nextInt();
+	}
+
+	double widraw()
+	{
+		if(balance-w_balance<balance)
+		{
+			balance=balance-w_balance;
+			bal=balance;
+		}
+		else 
+		{
+			System.out.println("You can't widraw because your current balance is less than widrawel balance");
+		}
+	return w_balance;
+	}
+	
+
+	void display2()
+	{
+	display();
+		System.out.println("----------------------------------------------------------");
+		System.out.println("Widraw : " + widraw());
+		System.out.println("Current Balance : " + balance);
+		System.out.println("Cheque book facility available ");
+	}
+}
+
+
+class Bank
+{
+	public static void main(String args[])
+	{
+		SavingAcount  s1=new SavingAcount ();
+		
+		System.out.println("--------------------Saving Acount---------------------");
+		s1.getdata1();
+		System.out.println("----------------------------------------------------------");
+		s1.display1();
+		System.out.println("----------------------------------------------------------");
+				
+		CurrentAcount  c1=new CurrentAcount ();
+		
+		System.out.println("--------------------Current Acount---------------------");
+		c1.getdata2();
+		System.out.println("----------------------------------------------------------");
+		c1.display2();
+		System.out.println("----------------------------------------------------------");	
+	}
+}	
+
+
+
+
+
+OUTPUT:
+
+--------------------Saving Acount---------------------
+Enter Customer Name :
+Ravi
+Enter Account Type :
+savings
+Enter Acount Number :
+202106100110007
+----------------------------------------------------------
+Enter Principal Balance :
+5000
+Enter Interest Rate    :
+10
+Enter Number of Year   :
+1
+Enter number of time   :
+2
+Enter Total Balance    :
+50000
+Enter Widrawel Amount  :
+20000
+----------------------------------------------------------
+Customer Name : Ravi
+Acount Type   : savings
+Acount Number : 202106100110007
+----------------------------------------------------------
+Final Amount : 605000.0
+Final Widrawal Amount : 20000.0
+Current Balance : 30000.0
+No cheque book facility available
+----------------------------------------------------------
+--------------------Current Acount---------------------
+Enter Customer Name :
+Umang
+Enter Account Type :
+current
+Enter Acount Number :
+20210340110017
+----------------------------------------------------------
+Enter your current balance :
+70000
+Enter your widraw amount :
+20000
+----------------------------------------------------------
+Customer Name : Umang
+Acount Type   : current
+Acount Number : 20210340110017
+----------------------------------------------------------
+Widraw : 20000.0
+Current Balance : 50000
+Cheque book facility available
+----------------------------------------------------------
+
+
+

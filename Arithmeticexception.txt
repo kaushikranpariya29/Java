@@ -1,0 +1,21 @@
+package com.example.builtinexample;
+
+public class Arithmeticexception {
+
+	public static void main(String[] args) {
+		try
+		{
+			int a[] = {10,20,30,40};
+			a[10]=5;
+			System.out.println("Result is : " + a[10]);
+		}catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Array Index out of bounds exception");
+			System.out.println(e);
+			e.printStackTrace();
+			//throw e;
+			
+		}
+
+	}
+
+}

@@ -1,0 +1,45 @@
+import java.util.Scanner;
+class Demo
+{
+    Scanner sc = new Scanner(System.in);
+    int rno;
+    String cname;
+    int tarrif;
+    int days;
+    int totalamount=0;
+    void getdata()
+    {
+        System.out.println("Enter the Room no : ");
+        rno = sc.nextInt();
+        System.out.println("Enter the Customer name : ");
+        cname = sc.next();
+        System.out.println("Enter the Trrif per day charge : ");
+        tarrif = sc.nextInt();
+        System.out.println("Enter the Days to stay in trip : ");
+        days = sc.nextInt();
+    }
+    void display()
+    {
+        System.out.println("----------------------Details---------------------------------");
+        System.out.println("Room no is = "+ rno);
+        System.out.println("Customer name is = "+ cname);
+        System.out.println("Tarrif day charge is = "+ tarrif);
+        System.out.println("Days is = "+ days);
+        System.out.println("Total amount is = "+ totalamount);
+    }
+    void calculate()
+    {
+        totalamount = days * tarrif ;
+    }
+    
+}
+class Hotel
+{
+    public static void main(String args[])
+    {
+        Demo h1 = new Demo();
+        h1.getdata();
+        h1.calculate();
+        h1.display();
+    }
+}

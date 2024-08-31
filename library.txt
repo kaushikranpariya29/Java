@@ -1,0 +1,79 @@
+import java.util.Scanner;
+class Library
+{
+	Scanner sc= new Scanner(System.in);
+		int mid;
+		String mname;
+		int bid;
+		String bauthorname;
+		int bprice;
+		int bpages;
+
+		void getdata()
+		{
+			System.out.println("Enter the member id = ");
+			mid = sc.nextInt();
+			System.out.println("Enter the member name = ");
+			mname = sc.next();
+			System.out.println("Enter the Book id = ");
+			bid = sc.nextInt();
+			System.out.println("Enter the Book author name = ");
+			bauthorname = sc.next();
+			System.out.println("Enter the Book Price = ");
+			bprice=sc.nextInt();
+			System.out.println("Enter the Book pages = ");
+			bpages = sc.nextInt();
+			
+		}
+		void Member()
+		{
+			System.out.println("Member id is = "+ mid);
+			System.out.println("Member name is = "+ mname);
+		}
+		void Bookdetails()
+		{
+			System.out.println("Book id is = "+ bid);
+			System.out.println("Book auother name is = "+ bauthorname);
+			System.out.println("Book price is = "+ bprice);
+			System.out.println("Book pages is = "+ bpages);
+		}
+}
+class Demo1
+{
+	public static void main(String args[])
+	{
+	int ch;
+	String choice;
+	Scanner sc= new Scanner(System.in);
+	Library d=new Library();
+	d.getdata();
+	do{
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("enter 1: Member details");
+		System.out.println("enter 2: Book details");
+		System.out.println("enter 3: Exit");
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("Enter your choice = ");
+		ch = sc.nextInt();
+		System.out.println("-----------------------------------------------------------------------");
+		switch(ch)
+		{
+			case 1:
+				d.Member();
+				break ;
+			case 2:
+				d.Bookdetails();
+				break ;
+			case 3:
+			 	break;
+		}
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("do you want to show any details");
+		choice = sc.next();
+		System.out.println("-----------------------------------------------------------------------");
+	}while(choice == "y");
+	}
+}
+
+
+
